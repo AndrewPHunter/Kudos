@@ -1,0 +1,28 @@
+<h5 mat-dialog-title style="color: var(--srp-blue);">
+  {{ title | titlecase }}
+</h5>
+<mat-divider style="margin-bottom: 20px;"></mat-divider>
+<form #dialogForm="ngForm" (ngSubmit)="onSubmit(dialogForm)">
+  <mat-dialog-content style="padding: 20px;">
+    <ng-content></ng-content>
+  </mat-dialog-content>
+  <mat-dialog-actions fxLayoutAlign="flex-end center" fxLayoutGap="30px">
+    <button
+      type="submit"
+      mat-button
+      color="primary"
+      [disabled]="dialogForm.invalid || dialogForm.pristine"
+    >
+      Save
+    </button>
+    <button
+      type="button"
+      mat-button
+      color="accent"
+      cdkFocusInitial
+      mat-dialog-close
+    >
+      Close
+    </button>
+  </mat-dialog-actions>
+</form>

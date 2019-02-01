@@ -1,0 +1,51 @@
+<app-pageable-table
+  matSort
+  matSortDirection="asc"
+  [data]="data"
+  [tableColumns]="tableColumns"
+  [headerTemplate]="headerTemplate"
+  (paginatorRendered)="registerPaginator($event)"
+  (sortRendered)="registerSort($event)"
+  #table
+>
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef [style.flex]="'0 0 20%'" mat-sort-header
+      >User</mat-header-cell
+    >
+    <mat-cell *matCellDef="let element" [style.flex]="'0 0 20%'">
+      {{ element.name }}
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="text">
+    <mat-header-cell *matHeaderCellDef [style.flex]="'0 0 40%'" mat-sort-header
+      >Kudo</mat-header-cell
+    >
+    <mat-cell *matCellDef="let element" [style.flex]="'0 0 40%'">
+      {{ element.text }}
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="created_at">
+    <mat-header-cell *matHeaderCellDef [style.flex]="'0 0 20%'" mat-sort-header
+      >Created</mat-header-cell
+    >
+    <mat-cell *matCellDef="let element" [style.flex]="'0 0 20%'">
+      {{ element.created_at | date }}
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="updated_at">
+    <mat-header-cell *matHeaderCellDef [style.flex]="'0 0 20%'" mat-sort-header
+      >Updated</mat-header-cell
+    >
+    <mat-cell *matCellDef="let element" [style.flex]="'0 0 20%'">
+      {{ element.updated_at | date }}
+    </mat-cell>
+  </ng-container>
+</app-pageable-table>
+<ng-template #headerTemplate>
+  <app-simple-filter-header
+    filterPlaceholder="Filter:"
+    fxFlex="100%"
+    fxLayoutAlign="center"
+    (viewRendered)="registerSimpleFilterInput($event)"
+  ></app-simple-filter-header>
+</ng-template>

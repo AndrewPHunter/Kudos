@@ -1,0 +1,93 @@
+<app-pageable-table
+  matSort
+  matSortDirection="asc"
+  [data]="data"
+  [tableColumns]="tableColumns"
+  [headerTemplate]="headerTemplate"
+  (paginatorRendered)="registerPaginator($event)"
+  (sortRendered)="registerSort($event)"
+  #table
+>
+  <ng-container matColumnDef="username">
+    <mat-header-cell *matHeaderCellDef [style.flex]="'0 0 20%'" mat-sort-header
+      >User Name</mat-header-cell
+    >
+    <mat-cell *matCellDef="let element" [style.flex]="'0 0 20%'">
+      {{ element.username }}
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="first_name">
+    <mat-header-cell *matHeaderCellDef [style.flex]="'0 0 20%'" mat-sort-header
+      >First Name</mat-header-cell
+    >
+    <mat-cell *matCellDef="let element" [style.flex]="'0 0 20%'">
+      {{ element.first_name }}
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="last_name">
+    <mat-header-cell *matHeaderCellDef [style.flex]="'0 0 20%'" mat-sort-header
+      >Last Name</mat-header-cell
+    >
+    <mat-cell *matCellDef="let element" [style.flex]="'0 0 20%'">
+      {{ element.last_name }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="kudos_given_count">
+    <mat-header-cell
+      *matHeaderCellDef
+      [style.flex]="'0 0 10%'"
+      mat-sort-header
+      fxLayoutAlign="center center"
+      >Kudos Given</mat-header-cell
+    >
+    <mat-cell
+      *matCellDef="let element"
+      [style.flex]="'0 0 10%'"
+      fxLayoutAlign="center center"
+    >
+      {{ element.kudos_given_count | number }}
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="kudos_received_count">
+    <mat-header-cell
+      *matHeaderCellDef
+      [style.flex]="'0 0 10%'"
+      mat-sort-header
+      fxLayoutAlign="center center"
+      >Kudos Received</mat-header-cell
+    >
+    <mat-cell
+      *matCellDef="let element"
+      [style.flex]="'0 0 10%'"
+      fxLayoutAlign="center center"
+    >
+      {{ element.kudos_received_count | number }}
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="giveKudo">
+    <mat-header-cell
+      *matHeaderCellDef
+      [style.flex]="'0 0 20%'"
+      fxLayoutAlign="center center"
+      >Kudo</mat-header-cell
+    >
+    <mat-cell
+      *matCellDef="let element"
+      [style.flex]="'0 0 20%'"
+      fxLayoutAlign="center center"
+    >
+      <button mat-icon-button color="accent" (click)="onGiveKudo(element)">
+        <mat-icon>thumb_up</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+</app-pageable-table>
+<ng-template #headerTemplate>
+  <app-simple-filter-header
+    filterPlaceholder="Filter:"
+    fxFlex="100%"
+    fxLayoutAlign="center"
+    (viewRendered)="registerSimpleFilterInput($event)"
+  ></app-simple-filter-header>
+</ng-template>

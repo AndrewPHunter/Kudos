@@ -1,0 +1,31 @@
+<app-form-dialog
+  [title]="data.title"
+  (formRendered)="registerForm($event)"
+  (formSubmitted)="onSubmit($event)"
+>
+  <div fxLayout="column" fxLayoutGap="20px">
+    <mat-form-field fxFlex="80%">
+      <input
+        matInput
+        id="username"
+        type="text"
+        name="username"
+        placeholder="User Name"
+        [ngModel]="entity.username"
+        required
+        disabled="true"
+      />
+    </mat-form-field>
+    <mat-form-field fxFlex="80%">
+      <input
+        matInput
+        id="text"
+        type="text"
+        name="text"
+        placeholder="Kudo"
+        ngModel
+        required
+      />
+    </mat-form-field>
+  </div>
+</app-form-dialog>
