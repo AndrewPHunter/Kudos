@@ -6,6 +6,7 @@ Take home project for [MindFlash](https://www.mindflash.com/) interview
 
 - Ensure you meet the [pre-requisites](#pre-requisites)
 - Clone the repo
+- Install Dependencies `npm install`
 - run `npm start`
 
 ## Pre-Requisites
