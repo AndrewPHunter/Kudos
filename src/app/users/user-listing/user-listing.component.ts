@@ -31,11 +31,13 @@ export class UserListingComponent extends PageableTableWrapperBase<User> {
       title: "Give Kudo",
       dialogData: element
     }).subscribe(kudo => {
-      (<UserService>this._service).giveKudo({
-        receiver_id: kudo.id,
-        text: kudo.text,
-        giver_id: this._auth.user.id
-      });
+      if (kudo) {
+        (<UserService>this._service).giveKudo({
+          receiver_id: kudo.id,
+          text: kudo.text,
+          giver_id: this._auth.user.id
+        });
+      }
     });
 
     this._subscriptions.push(dialogSubscription);
